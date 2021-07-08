@@ -41,32 +41,21 @@ def extraction(input_dir):
             x1 = []
             while count <= seq_len: 
                 success, image = vidObj.read() 
-                #print(image)
                 if success:
                     image = cv2.resize(image, (img_height, img_width))
                     x1.append(image)
-                    #y = [0]*len(classes)
-                    #print("y piccola:",y)
-                    #y[classes.index(c)] = 1
-                    #y1.append(y)
-                    #y1.append(c)
                     count += 1
                 else:
-                    #print("Defected frame")
-                    break
-            #print('count:',count,' seq:', seq_len)        
+                    break        
             if count-1 == seq_len :
                 n_video = n_video +1
                 out = temporalize2(np.array(x1),50)    
-                #print(len(out))
                 for i in range(len(out)):
                     X.append(out[i])
                     y = [0]*len(classes)
-                    #print("len y:",len(y))
                     y[classes.index(c)] = 1
                     Y.append(y)
             
-
     print("Num videos:",n_video)
     X = np.asarray(X)
     Y = np.asarray(Y)

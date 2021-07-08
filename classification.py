@@ -1,6 +1,3 @@
-
- 
-
 import csv
 import shutil, os
 import glob 
@@ -15,8 +12,7 @@ def classification(input_f, labels_f):
         
     if os.path.exists(input_f+'1')==False:   
         os.makedirs(input_f+'1')
-    
-        
+            
     f = open(labels_f, newline='')
     reader = csv.reader(f, delimiter=',')
     count = 0
@@ -30,7 +26,6 @@ def classification(input_f, labels_f):
                 except:
                     print("Folder alreay exits")
             else:
- 
                 try:
                     shutil.move(input_f+file, input_f+str(1))
                 except:

@@ -13,10 +13,7 @@ def temporalize2(X,lookback):
     for i in range(len(X)-lookback):
         t = []
         for j in range(0,lookback):
-            # Gather past records upto the lookback period
-            #t.append(X[[(i+j)], :])
             t.append(X[(i+j), :])
-            #print("t di ", i,j)
         output_X.append(t)
     return output_X
 
@@ -69,7 +66,6 @@ def main():
     print("Numero di block frames:",len(X))
 
     print("...RESHAPE...")
-    # Normalizzazione
     X = np.array(X) / 255
     X.reshape(-1, 64, 64, 1)
     print("...END RESHAPE...")
@@ -103,7 +99,6 @@ def main():
     print("...END EXTRACTION...")
 
     print("...RESHAPE TEST...")
-    # Normalizzazione
     X_test = np.array(X_test) / 255
     X_test.reshape(-1, 64, 64, 1)
     print("...END RESHAPE TEST...") 
